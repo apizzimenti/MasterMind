@@ -26,7 +26,7 @@ public class Reader {
 	public String read() {
 		String last = null;	
 		int finder = (int)(Math.random() * 50);
-		File newer = new File("../MasterMind Game/src/Words.txt");
+		File newer = new File("../MasterMind-Game-master/src/Words.txt");
 		
 		try {
 			Scanner in = new Scanner(newer);
