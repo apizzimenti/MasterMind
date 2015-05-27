@@ -41,7 +41,7 @@ public class Driver extends JFrame {
 				break;
 			} else {
 				x.editPoints(10);
-				area.append(best);
+				area.append(best + "\n");
 			}
 			count += 1;
 		}
