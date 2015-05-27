@@ -17,6 +17,8 @@ public class Driver extends JFrame {
 		super.setSize(500, 350);
 		area.setEditable(false);
 		container.add(area);
+		area.append("Rules:\n1. only four-word guesses are permitted.");
+		area.append("\n2. win the game at all costs.\n");
 		
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 		super.setLocation((int)(dim.getWidth() / 2) - 250, 0);
@@ -41,7 +43,6 @@ public class Driver extends JFrame {
 				x.editPoints(10);
 				area.append(best);
 			}
-			area.append("\t" + x.getPoints() + "\n");
 			count += 1;
 		}
 		

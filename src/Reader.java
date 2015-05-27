@@ -24,12 +24,12 @@ public class Reader {
 	}
 	
 	public String read() {
-		String last = null;
-		
+		String last = null;	
 		int finder = (int)(Math.random() * 50);
+		File newer = new File("../MasterMind Game/src/Words.txt");
+		
 		try {
-			Scanner in = new Scanner(new File(
-					"//Users//Anthony//Dropbox//Comp Sci//MasterMind Game//src//Words.txt"));
+			Scanner in = new Scanner(newer);
 			for (int i = 0; i < finder; i++){
 					 last = in.nextLine();
 			}
