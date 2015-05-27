@@ -9,7 +9,7 @@ public class Driver extends JFrame {
 	
 	public static void main(String[]args) throws IOException {
 		Driver x = new Driver();
-		x.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+		x.setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
 	
 	public Driver() throws IOException {
