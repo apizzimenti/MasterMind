@@ -21,7 +21,7 @@ public class Driver extends JFrame {
 		area.append("\n2. win the game at all costs;\n");
 		area.append("3. X's represent a letter in the correct spot;\n");
 		area.append("4. O's represent a letter in the wrong spot;\n");
-		area.append("5. blanks represent a letter that's not in the word.");
+		area.append("5. blanks represent a letter that's not in the word.\n\n");
 		
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 		super.setLocation((int)(dim.getWidth() / 2) - 250, 0);
