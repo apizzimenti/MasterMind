@@ -14,14 +14,14 @@ public class Driver extends JFrame {
 	
 	public Driver() throws IOException {
 		super.setVisible(true);
-		super.setSize(500, 350);
+		super.setSize(500, 400);
 		area.setEditable(false);
 		container.add(area);
 		area.append("Rules:\n1. only four-letter guesses are permitted;");
 		area.append("\n2. win the game at all costs;\n");
 		area.append("3. X's represent a letter in the correct spot;\n");
 		area.append("4. O's represent a letter in the wrong spot;\n");
-		area.append("5. blanks represent a letter that's not in the word.\n\n");
+		area.append("5. blanks represent a letter that isn't in the word.\n");
 		
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 		super.setLocation((int)(dim.getWidth() / 2) - 250, 0);
@@ -32,17 +32,21 @@ public class Driver extends JFrame {
 		
 		for (int i = 0; i < 10; i++) {
 			if (i > 7) {
-				JOptionPane.showMessageDialog(null, "You only have " + (10 - i) + " guess(es) remaining!", "MasterMind", JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(null, "You only have " + 
+						(10 - i) + " guess(es) remaining!", "MasterMind", 
+						JOptionPane.INFORMATION_MESSAGE);
+				
 			}
 			
-			String tester = JOptionPane.showInputDialog(null, "Guess away!", "MasterMind", JOptionPane.INFORMATION_MESSAGE);
+			String tester = JOptionPane.showInputDialog(null, "Guess away!", 
+					"MasterMind", JOptionPane.INFORMATION_MESSAGE);
 			
 			if (tester == null) {
 				throw new IOException("Quitting already?");
 			} else if (tester.equals("")) {
-				throw new IOException("I crashed because you didn't put anything in!");
+				throw new IOException("You didn't put anything in!");
 			} else if (tester.length() < 4 || tester.length() > 4) {
-				throw new IOException("Too long or too short. In any case, try again!");
+				throw new IOException("Try again!");
 			}
 			
 			String best = x.analyze(tester);
