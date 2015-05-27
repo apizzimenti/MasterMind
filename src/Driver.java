@@ -17,9 +17,11 @@ public class Driver extends JFrame {
 		super.setSize(500, 350);
 		area.setEditable(false);
 		container.add(area);
-		area.append("Rules:\n1. only four-letter guesses are permitted.");
-		area.append("\n2. win the game at all costs.\n");
-		area.append("X's represent a letter in the correct spot, and O's stand for good letters in the wrong spot");
+		area.append("Rules:\n1. only four-letter guesses are permitted;");
+		area.append("\n2. win the game at all costs;\n");
+		area.append("3. X's represent a letter in the correct spot;\n");
+		area.append("4. O's represent a letter in the wrong spot;\n");
+		area.append("5. blanks represent a letter that's not in the word.");
 		
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 		super.setLocation((int)(dim.getWidth() / 2) - 250, 0);
