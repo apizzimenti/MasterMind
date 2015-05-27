@@ -52,7 +52,7 @@ public class Driver extends JFrame {
 			}
 			
 			if (i > 7) {
-				JOptionPane.showMessageDialog(null, "You only have " + (10 - i) + " guess(es) remaining!", "MasterMind", JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(null, "You only have " + (9 - i) + " guess(es) remaining!", "MasterMind", JOptionPane.INFORMATION_MESSAGE);
 			}
 			count += 1;
 		}
