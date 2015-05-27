@@ -31,6 +31,10 @@ public class Driver extends JFrame {
 		int count = 0;
 		
 		for (int i = 0; i < 10; i++) {
+			if (i > 7) {
+				JOptionPane.showMessageDialog(null, "You only have " + (10 - i) + " guess(es) remaining!", "MasterMind", JOptionPane.INFORMATION_MESSAGE);
+			}
+			
 			String tester = JOptionPane.showInputDialog(null, "Guess away!", "MasterMind", JOptionPane.INFORMATION_MESSAGE);
 			
 			if (tester == null) {
@@ -51,9 +55,6 @@ public class Driver extends JFrame {
 				area.append(best + "\n");
 			}
 			
-			if (i > 7) {
-				JOptionPane.showMessageDialog(null, "You only have " + (9 - i) + " guess(es) remaining!", "MasterMind", JOptionPane.INFORMATION_MESSAGE);
-			}
 			count += 1;
 		}
 		
