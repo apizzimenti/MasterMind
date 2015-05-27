@@ -18,7 +18,7 @@ public class Driver extends JFrame {
 		area.setEditable(false);
 		container.add(area);
 		area.append("Rules:\n1. only four-word guesses are permitted.");
-		area.append("\n2. win the game at all costs.\n");
+		area.append("\n2. win the game at all costs.\n\n");
 		
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 		super.setLocation((int)(dim.getWidth() / 2) - 250, 0);
@@ -30,8 +30,12 @@ public class Driver extends JFrame {
 		for (int i = 0; i < 10; i++) {
 			String tester = JOptionPane.showInputDialog(null, "Guess away!", "MasterMind", JOptionPane.INFORMATION_MESSAGE);
 			
-			if (tester.length() > 4) {
-				throw new IOException("Too long, try again!");
+			if (tester == null) {
+				throw new IOException("Quitting already?");
+			} else if (tester.equals("")) {
+				throw new IOException("I crashed because you didn't put anything in!");
+			} else if (tester.length() < 4 || tester.length() > 4) {
+				throw new IOException("Too long or too short. In any case, try again!");
 			}
 			
 			String best = x.analyze(tester);
