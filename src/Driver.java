@@ -50,6 +50,10 @@ public class Driver extends JFrame {
 				x.editPoints(10);
 				area.append(best + "\n");
 			}
+			
+			if (i < 4) {
+				JOptionPane.showMessageDialog(null, "You only have " + i + " guesses remaining!", "MasterMind", JOptionPane.INFORMATION_MESSAGE);
+			}
 			count += 1;
 		}
 		
