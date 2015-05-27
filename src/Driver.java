@@ -17,8 +17,9 @@ public class Driver extends JFrame {
 		super.setSize(500, 350);
 		area.setEditable(false);
 		container.add(area);
-		area.append("Rules:\n1. only four-word guesses are permitted.");
-		area.append("\n2. win the game at all costs.\n\n");
+		area.append("Rules:\n1. only four-letter guesses are permitted.");
+		area.append("\n2. win the game at all costs.\n");
+		area.append("X's represent a letter in the correct spot, and O's stand for good letters in the wrong spot");
 		
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 		super.setLocation((int)(dim.getWidth() / 2) - 250, 0);
