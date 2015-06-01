@@ -44,27 +44,35 @@ public class Reader {
 	public String analyze(String a) {
 		String best = "";
 		
-		// splits words into arrays
+		// splits words into arrays, initializes count
 		String [] data = word.split("");
 		String [] guess = a.split("");
+		int count = 16;
 
-		// checks letters
-		outerloop: for(int i = 0; i < 4; i++){
-			if(data[i].equals(guess[i])){
+		// checks same-index similarities
+		for (int i = 0; i < data.length; i++) {
+			if (data[i].equals(guess[i])) {
+				count--;
 				best += "X";
-				points += 2;
-				continue;
-			}
-			for(int j = 0; j < 4; j++){
-				if(j == i)
-					continue;
-				if(data[i].equals(guess[j])){
-					best += "O";
-					points += 1;
-					continue outerloop;
-				}
 			}
 		}
+		
+		// checks differing-index similarities
+		for (int j = 0; j < data.length; j++) {
+			int sin = 0;
+			for (int k = 0; k < data.length; k++) {
+				if (!(data[j].equals(guess[k]))) {
+					sin++;
+				}
+			}
+			if (sin <= 2)
+				count -= 3;
+			else
+				count -= sin;
+		}
+		
+		for (int l = 0; l < count; l++)
+			best += "O";
 		
 		return best;
 	}
