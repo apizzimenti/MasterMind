@@ -54,7 +54,6 @@ public class Driver extends JFrame {
 			String best = x.analyze(tester);
 
 			if (tester.equals(fw)) {
-				x.editPoints(18);
 				break;
 			} else {
 				x.editPoints(10);
@@ -113,6 +112,5 @@ public class Driver extends JFrame {
 		if (dec == JOptionPane.NO_OPTION){
 			area.append("That's too bad.");
 		}
-
 	}
 }
