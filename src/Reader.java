@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Reader {
 
 	private final String word;
-	private int points = 110;
+	private int points = 100;
 
 	public Reader() {
 		word = read();
@@ -26,7 +26,7 @@ public class Reader {
 	public String read() {
 		String last = null;
 		int finder = (int)(Math.random() * 50);
-		File newer = new File("../MasterMind/src/Words.txt");
+		File newer = new File("../MasterMind Game/src/Words.txt");
 
 		try {
 			Scanner in = new Scanner(newer);
