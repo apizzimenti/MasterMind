@@ -16,7 +16,7 @@ public class Top10 {
 	public void buildList(){
 		String match = null;
 		try{
-			Scanner in = new Scanner(new File("../MasterMind/src/top10.txt"));
+			Scanner in = new Scanner(new File("../MasterMind Game/src/top10.txt"));
 			while(in.hasNext()){
 				match = in.nextLine();
 				String[] score = match.split(":"+"\\t");
@@ -83,7 +83,7 @@ public class Top10 {
 
 	public void updateFile(){
 		try {
-			FileWriter writer = new FileWriter(new File("../MasterMind/src/top10.txt"));
+			FileWriter writer = new FileWriter(new File("../MasterMind Game/src/top10.txt"));
 	        PrintWriter out = new PrintWriter(writer);
 
 	        String file = "";
