@@ -15,19 +15,19 @@ public class Top10 {
 	
 	public void buildList(){
 		String match = null;
-	try{	
-		Scanner in = new Scanner(new File("../MasterMind Game/src/top10.txt"));
-		while(in.hasNext()){
-			match = in.nextLine();
-			String[] score = match.split(": ");
-			int sc = Integer.parseInt(score[1]);
-			Player build = new Player(sc, score[0]);
-			top.add(build);
-		}
-		in.close();
-	} catch (IOException except) {
-            throw new RuntimeException(except.toString());
-            }
+		try{	
+			Scanner in = new Scanner(new File("../MasterMind Game/src/top10.txt"));
+			while(in.hasNext()){
+				match = in.nextLine();
+				String[] score = match.split(": ");
+				int sc = Integer.parseInt(score[1]);
+				Player build = new Player(sc, score[0]);
+				top.add(build);
+			}
+			in.close();
+		} catch (IOException except) {
+	        throw new RuntimeException(except.toString());
+	    }
 	}
 	
 	public boolean enoughSpace(){
@@ -54,11 +54,13 @@ public class Top10 {
 				top.add(i, ins);
 				break;
 			}
+			else
+				top.add(top.size()-1,ins);
 		}
 	}		
 	
 	public boolean getIn(int score){
-		for(int i = 0; i < 10; i++){
+		for(int i = 0; i < top.size(); i++){
 			Player x = top.get(i);
 			if(x.getScore() > score){
 				continue;
@@ -87,13 +89,16 @@ public class Top10 {
 	    }
 	}
 	
+	public ArrayList<Player> getList(){
+		return top;
+	}
+	
 	public void printList(){
-		String file = null;
+		String file = "";
 		for (int i = 0; i < top.size(); i++) {
         	Player n = top.get(i);
-        	file = String.format(n.getName()+": "+n.getScore()+"\n");
+        	file += String.format(n.getName()+": "+n.getScore()+"\n");
 		}
 		System.out.print(file);
 	}
 }
-

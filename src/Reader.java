@@ -54,6 +54,7 @@ public class Reader {
 			if (data[i].equals(guess[i])) {
 				count--;
 				best += "X";
+				points += 2;
 			}
 		}
 		
@@ -71,8 +72,10 @@ public class Reader {
 				count -= sin;
 		}
 		
-		for (int l = 0; l < count; l++)
+		for (int l = 0; l < count; l++) {
 			best += "O";
+			points += 1;
+		}
 		
 		return best;
 	}

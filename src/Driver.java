@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 import java.io.IOException;
 
 public class Driver extends JFrame {
@@ -41,6 +42,7 @@ public class Driver extends JFrame {
 			String tester = JOptionPane.showInputDialog(null, "Guess away!", 
 					"MasterMind", JOptionPane.INFORMATION_MESSAGE);
 			
+			
 			if (tester == null) {
 				throw new IOException("Quitting already?");
 			} else if (tester.equals("")) {
@@ -56,7 +58,7 @@ public class Driver extends JFrame {
 				break;
 			} else {
 				x.editPoints(10);
-				area.append(best + "\n");
+				area.append(tester + "\t" + best + "\n");
 			}
 			
 			count += 1;
@@ -71,5 +73,39 @@ public class Driver extends JFrame {
 		} else {
 			area.append("\nNice work, you got " + x.getPoints() + " points.");
 		}
+		
+		//Player finder = new Player(x.getPoints());
+		Top10 last = new Top10();
+		if(last.enoughSpace() == true){
+			area.append("\n\nCongrats you aren't very good but you got in anyways.\n");
+			Player finder = new Player(x.getPoints());
+			last.insertPlayer(finder);
+			last.printList();
+			last.updateFile();
+		}
+		
+		else if(last.getIn(x.getPoints()) == true){
+			area.append("\n\nCongrats you got into the leaderboard!\n");
+			Player finder = new Player(x.getPoints());
+			last.deleteExcessPlayers();
+			last.insertPlayer(finder);
+			last.updateFile();
+		}
+		
+		else if(last.getIn(x.getPoints()) == false){
+			area.append("\nSorry you did not get in the leaderboard.\n");
+		}
+		
+		int dec = JOptionPane.showConfirmDialog(null, "Would you like to see the"
+				+ " leaderboard?", "MasterMind", JOptionPane.YES_NO_OPTION);
+		
+		if (dec == JOptionPane.YES_OPTION){
+			ArrayList<Player> dis = last.getList();
+			for(int i = 0; i < dis.size(); i++){
+				Player out = dis.get(i);
+				area.append(out.getName()+": "+out.getScore()+"\n");
+			}
+		}
+		
 	}
 }
