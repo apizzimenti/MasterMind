@@ -1,3 +1,7 @@
+// Anthony Pizzimenti and David Wu
+//
+// Driver for the Reader, Player, and Top10 classes; plays the MasterMind Game.
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
@@ -22,7 +26,7 @@ public class Driver extends JFrame {
 		area.append("\n2. win the game at all costs;\n");
 		area.append("3. X's represent a letter in the correct spot;\n");
 		area.append("4. O's represent a letter in the wrong spot;\n");
-		area.append("5. blanks represent a letter that isn't in the word.\n");
+		area.append("5. blanks represent a letter that isn't in the word.\n\n");
 
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 		super.setLocation((int)(dim.getWidth() / 2) - 250, 0);
@@ -54,6 +58,7 @@ public class Driver extends JFrame {
 			String best = x.analyze(tester);
 
 			if (tester.equals(fw)) {
+				area.append(tester + "\t" + best + "\n");
 				break;
 			} else {
 				x.editPoints(10);
@@ -73,13 +78,11 @@ public class Driver extends JFrame {
 			area.append("\nNice work, you got " + x.getPoints() + " points.");
 		}
 
-		//Player finder = new Player(x.getPoints());
 		Top10 last = new Top10();
 		if(last.enoughSpace() == true){
-			area.append("\n\nCongrats you aren't very good but you got in anyways.\n");
+			area.append("\n\nCongrats, you got in anyways.\n");
 			Player finder = new Player(x.getPoints());
 			last.insertPlayer(finder);
-			last.printList();
 			last.updateFile();
 		}
 

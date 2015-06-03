@@ -1,3 +1,7 @@
+// David Wu and Anthony Pizzimenti
+//
+// Player class for insertion into the leaderboard
+
 import javax.swing.JOptionPane;
 
 public class Player {

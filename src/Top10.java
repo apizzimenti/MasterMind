@@ -1,3 +1,7 @@
+// David Wu and Anthony Pizzimenti
+//
+// contians the ArrayList for the Leaderboard
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;

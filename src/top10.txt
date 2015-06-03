@@ -1,11 +1,2 @@
-Dik: 100
-AS: 80
-DOIJE: 39
-dik: 30
-fuk: 29
-tent: 28
-meager: 27
-find: 26
-bitchly: 26
-retard: 23
+Anthony:	21
 

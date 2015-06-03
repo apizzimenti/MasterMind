@@ -1,3 +1,7 @@
+// Anthony Pizzimenti and David Wu
+//
+// reads words from the source file and determines points
+
 import java.io.IOException;
 import java.io.File;
 import java.util.Scanner;
