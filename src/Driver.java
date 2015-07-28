@@ -7,6 +7,11 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.io.IOException;
 
+/*
+ *
+ * author Anthony Pizzimenti and David Wu
+*/
+
 public final class Driver extends JFrame {
 
 	private JTextArea area = new JTextArea();

@@ -4,9 +4,9 @@
 
 import javax.swing.JOptionPane;
 
-public class Player {
+public final class Player {
 
-	private int score;
+	private final int score;
 	private String name;
 
 	public Player(int s){

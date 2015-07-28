@@ -7,7 +7,7 @@ import java.io.InputStream;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
-public class Reader {
+public final class Reader {
 
 	private final String word;
 	private int points = 100;
