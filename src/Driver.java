@@ -7,7 +7,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.io.IOException;
 
-public class Driver extends JFrame {
+public final class Driver extends JFrame {
 
 	private JTextArea area = new JTextArea();
 	private Container container = getContentPane();
@@ -45,7 +45,6 @@ public class Driver extends JFrame {
 
 			String tester = JOptionPane.showInputDialog(null, "Guess away!",
 					"MasterMind", JOptionPane.INFORMATION_MESSAGE);
-
 
 			if (tester == null) {
 				throw new IOException("Quitting already?");
