@@ -3,8 +3,9 @@
 // reads words from the source file and determines points
 
 import java.io.IOException;
-import java.io.File;
-import java.util.Scanner;
+import java.io.InputStream;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 
 public class Reader {
 
@@ -28,29 +29,29 @@ public class Reader {
 	}
 
 	public String read() {
-		String last = null;
+		String last = "";
 		int finder = (int)(Math.random() * 50);
-		File newer = new File("../MasterMind Game/src/Words.txt");
+        InputStream in = getClass().getResourceAsStream("Words.txt");
+        BufferedReader input = new BufferedReader(new InputStreamReader(in));
 
-		try {
-			Scanner in = new Scanner(newer);
-			for (int i = 0; i < finder; i++){
-					 last = in.nextLine();
-			}
-			in.close();
-		} catch (IOException e) {
-			throw new RuntimeException(e.toString());
-		}
-		return last;
-	}
+        try {
+            for (int i = 0; i < finder; i++) {
+                last = input.readLine();
+            }
+            return last;
+            
+        } catch (IOException e) {
+            throw new RuntimeException(e.toString());
+        }
+    }
 
 
 	public String analyze(String a) {
 		String best = "";
 
 		// splits words into arrays, initializes count
-		String [] data = word.split("");
-		String [] guess = a.split("");
+		String[] data = word.split("");
+		String[] guess = a.split("");
 		int count = 16;
 
 		// checks same-index similarities
@@ -70,17 +71,17 @@ public class Reader {
 					sin++;
 				}
 			}
-			if (sin <= 2)
+			if (sin <= 2) {
 				count -= 3;
-			else
+            } else {
 				count -= sin;
+            }
 		}
 
 		for (int l = 0; l < count; l++) {
 			best += "O";
 			points += 1;
 		}
-
 		return best;
 	}
 }
