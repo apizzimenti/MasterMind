@@ -1,6 +1,3 @@
-// David Wu and Anthony Pizzimenti
-//
-// contians the ArrayList for the Leaderboard
 
 import java.io.File;
 import java.io.FileWriter;
@@ -9,20 +6,28 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * class which describes a top 10 list of players
+ * @author David Wu
+ */
+
 public class Top10 {
+    
+    /**
+     * @param top ArrayList where player objects are stored
+     */
 
-	private ArrayList<Player> top = new ArrayList<Player>();
+	private final ArrayList<Player> top = new ArrayList<Player>();
 
-	public Top10(){
+	public Top10() {
 		buildList();
 	}
 
-	public void buildList(){
-		String match = null;
+	public final void buildList() {
 		try{
 			Scanner in = new Scanner(new File("../MasterMind Game/src/top10.txt"));
 			while(in.hasNext()){
-				match = in.nextLine();
+				String match = in.nextLine();
 				String[] score = match.split(":"+"\\t");
 				int sc = Integer.parseInt(score[1]);
 				Player build = new Player(sc, score[0]);
@@ -34,65 +39,50 @@ public class Top10 {
 	    }
 	}
 
-	public boolean enoughSpace(){
-		if(top.size()<10){
-			return true;
-		}
-		else
-			return false;
+	public boolean enoughSpace() {
+        return top.size() < 10;
 	}
 
-	public void deleteExcessPlayers(){
+	public void deleteExcessPlayers() {
 		while(top.size()>10){
 			top.remove(top.size()-1);
 		}
 	}
 
-	public void insertPlayer(Player ins){
-		for(int i = top.size(); i >= 0; i--){
-			if(top.size() == 0){
+	public void insertPlayer(Player ins) {
+		for (int i = top.size(); i >= 0; i--) {
+			if (top.isEmpty()) {
 				top.add(ins);
 				break;
-			}
-			
-			if(i == 0){
+			} if (i == 0) {
 				top.add(i, ins);
 				break;
 			}
 			
 			Player x = top.get(i-1);
-			if(x.getScore() > ins.getScore()){
+			if (x.getScore() > ins.getScore()) {
 				top.add(i, ins);
 				break;
 			}
-			else if(x.getScore() <= ins.getScore()){
-				continue;
-			}	
 		}
-		
 	}
 
-	public boolean getIn(int score){
-		for(int i = 0; i < top.size(); i++){
-			Player x = top.get(i);
-			if(x.getScore() > score){
-				continue;
-			}
-			else if(x.getScore() <= score){
+	public boolean getIn(int score) {
+		for (Player x : top) {
+			if (x.getScore() <= score) {
 				return true;
 			}
 		}
 		return false;
 	}
 
-	public void updateFile(){
+	public void updateFile() {
 		try {
 			FileWriter writer = new FileWriter(new File("../MasterMind Game/src/top10.txt"));
 	        PrintWriter out = new PrintWriter(writer);
 
 	        String file = "";
-	        for (int i = 0; i < top.size(); i++) {
-	        	Player n = top.get(i);
+	        for (Player n : top) {
 	        	file += String.format(n.getName()+":\t"+n.getScore()+"%n");
 	        }
 	        out.println(file);
@@ -102,14 +92,13 @@ public class Top10 {
 	    }
 	}
 
-	public ArrayList<Player> getList(){
+	public ArrayList<Player> getList() {
 		return top;
 	}
 
-	public void printList(){
+	public void printList() {
 		String file = "";
-		for (int i = 0; i < top.size(); i++) {
-        	Player n = top.get(i);
+		for (Player n : top ) {
         	file += String.format(n.getName()+":\t"+n.getScore()+"%n");
 		}
 		System.out.print(file);

@@ -1,19 +1,32 @@
-// Anthony Pizzimenti and David Wu
-//
-// reads words from the source file and determines points
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
+/**
+ * Reads words from text file (packaged into .jar) and tests guessed
+ * words against actual words
+ * @author Anthony Pizzimenti
+ */
+
 public final class Reader {
+    
+    /**
+     * @param word word to be guessed
+     * @param points total possible number of points decremented as
+     * number of guesses increases
+     */
 
 	private final String word;
 	private int points = 100;
 
 	public Reader() {
-		word = read();
+        /**
+         * @param word initializes global variable
+         */
+        
+        word = read();
 	}
 
 	public String getWord() {
@@ -21,6 +34,11 @@ public final class Reader {
 	}
 
 	public void editPoints(int add) {
+        /**
+         * invoked when a change to that person's points in the round is needed
+         * @param add number of points to be deducted from the initial total of 100
+         */
+        
 		points -= add;
 	}
 
@@ -29,8 +47,16 @@ public final class Reader {
 	}
 
 	public String read() {
+        /**
+         * @return word to be guessed from resource list
+         */
+        
 		String last = "";
 		int finder = (int)(Math.random() * 50);
+        
+        /* use InputStream and BufferedReader instead of File and Scanner/Reader
+         * to package into .jar */
+        
         InputStream in = getClass().getResourceAsStream("Words.txt");
         BufferedReader input = new BufferedReader(new InputStreamReader(in));
 

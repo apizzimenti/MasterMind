@@ -1,18 +1,22 @@
-// Anthony Pizzimenti and David Wu
-//
-// Driver for the Reader, Player, and Top10 classes; plays the MasterMind Game.
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 import java.io.IOException;
 
-/*
- *
- * author Anthony Pizzimenti and David Wu
-*/
+/**
+ * Driver class for the MasterMind game
+ * @author Anthony Pizziment and David Wu
+ * @version 2.1, July 2015
+ */
 
 public final class Driver extends JFrame {
+    
+    /**
+     * @param area TextArea containing rules, guessed words, results
+     * and possibly leader-board
+     * @param container container for adding text
+     */
 
 	private JTextArea area = new JTextArea();
 	private Container container = getContentPane();
@@ -23,6 +27,11 @@ public final class Driver extends JFrame {
 	}
 
 	public Driver() throws IOException {
+        
+        /**
+         * launches application
+         * @throws IOException if prompted fields aren't filled
+         */
 		super.setVisible(true);
 		super.setSize(500, 600);
 		area.setEditable(false);
@@ -110,8 +119,8 @@ public final class Driver extends JFrame {
 			area.append("Name\tScore\n");
 			area.append("-------\t-------\n");
 			ArrayList<Player> dis = last.getList();
-			for(int i = 0; i < dis.size(); i++){
-				Player out = dis.get(i);
+            
+			for(Player out : dis) {
 				area.append(out.getName()+":\t"+out.getScore()+"\n");
 			}
 		}
